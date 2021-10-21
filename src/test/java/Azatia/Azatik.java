@@ -1,10 +1,14 @@
 package Azatia;
 
 import com.google.common.annotations.VisibleForTesting;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,7 +18,14 @@ public class Azatik {
 
 @Test
     public void Azatik() throws InterruptedException {
-    System.setProperty("webdriver.chrome.driver", "/Job/chromedriver.exe");
+
+    WebDriverManager.chromedriver().setup();
+
+    ChromeOptions options = new ChromeOptions();
+
+    options.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
+    options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+
     ChromeDriver driver = new ChromeDriver();
     driver.manage().window().maximize();
 
