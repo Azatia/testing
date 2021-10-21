@@ -67,9 +67,15 @@ public class Azatik {
     driver.findElementByClassName("rb-search-section-input").findElement(By.className("dropdown-toggle")).click();
     driver.findElementsByClassName("rb-item").get(1).click();
 
+    // выбираем комнатность
+    driver.findElementByClassName("rb-room-count-filter-item").findElements(By.className("btn-light")).get(2).click();
+
+    // Кнопка «Поиск»
     driver.findElementByClassName("v-btn-search").click();
 
-// test
+    // --
+    driver.findElementByClassName("v-demand-start-frame-result-body").findElements(By.className("rb-secondary-supply-item-summary")).get(1).click();
+
 
 
 
