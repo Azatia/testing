@@ -110,11 +110,16 @@ public class Azatik {
 
         Thread.sleep(3000);
 
-        // Нажимаем на «Копировать»
+        //Пытаемся нажать на поле номер кв и внести данные
+
         driver
-                .findElementById("rb-comp-5___BV_modal_footer_").
-                findElement(By.className("btn-primary"))
-                .click();
+                .findElementsById("rb-comp-5___BV_modal_body_").
+
+        // Нажимаем на «Копировать»
+        //driver
+          //      .findElementById("rb-comp-5___BV_modal_footer_")
+            //    .findElement(By.className("btn-primary"))
+              //  .click();
     }
 
 
