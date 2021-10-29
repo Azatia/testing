@@ -113,13 +113,15 @@ public class Azatik {
         //Пытаемся нажать на поле номер кв и внести данные
 
         driver
-                .findElementsById("rb-comp-5___BV_modal_body_").
+                .findElement(By.className("sf-flat-num-item"))
+                .findElement(By.cssSelector("input"))
+                .sendKeys("88");
 
         // Нажимаем на «Копировать»
-        //driver
-          //      .findElementById("rb-comp-5___BV_modal_footer_")
-            //    .findElement(By.className("btn-primary"))
-              //  .click();
+        driver
+                .findElementById("rb-comp-5___BV_modal_footer_")
+                .findElement(By.className("btn-primary"))
+                .click();
     }
 
 
