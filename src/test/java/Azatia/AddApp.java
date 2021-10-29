@@ -15,10 +15,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-public class Azatik {
+public class AddApp {
 
     @Test
-    public void Azatik() throws InterruptedException {
+    public void azatik() throws InterruptedException {
 
         WebDriverManager.chromedriver().setup();
 
