@@ -1,21 +1,19 @@
 package Azatia;
 
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.IOException;
+public class links {
 
-public class PasswordRecovery {
 
     @Test
-    public void azatik() throws InterruptedException, IOException, UnsupportedFlavorException {
+    public void azatik() throws InterruptedException {
 
         WebDriverManager.chromedriver().setup();
 
@@ -27,26 +25,6 @@ public class PasswordRecovery {
         ChromeDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
-        driver.get("https://rbd.kz/site/login");
-
-
-        Thread.sleep(3000);
-
-        //Кликаем на кнопку «Забыли пароль»
-        driver
-                .findElementById("bcol-forget-pass")
-                .click();
-
-        // Указываем в поле E-mail
-        driver
-                .findElement(By.className("form-control"))
-                .sendKeys("vesrbd@mail.ru");
-
-
-        //Нажимаем на кнопку «Восстановить»
-        driver
-                .findElementByClassName("rb-btn-next")
-                .click();
 
         //Идём на почту Mail.ru
         driver.get("https://mail.ru/");
@@ -82,42 +60,21 @@ public class PasswordRecovery {
 
         // Открываем письмо
         driver
-                .findElementsByClassName("ll-sj__normal")
+                .findElementsByClassName("llc__content")
                 .get(0)
                 .click();
 
-        Thread.sleep(7000);
+        Thread.sleep(4000);
 
         // Переходим по ссылке
+
         driver
-                .findElementByClassName("cl_725681")
-                .findElement(By.cssSelector("a"))
+                .findElementByClassName("cl_709040")
+                .findElement(By.linkText("https://rbd.kz/site/resetpass?passResetKey=FB5DC61BDB97F01F0CAAEF9C6A685891"))
                 .click();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
     }
-
 }
