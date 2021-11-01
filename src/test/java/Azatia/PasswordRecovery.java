@@ -90,9 +90,16 @@ public class PasswordRecovery {
 
         // Переходим по ссылке
         driver
-                .findElementByClassName("cl_725681")
+                .findElements(By.cssSelector("tbody"))
+                .get(1)
+                .findElements(By.cssSelector("tr"))
+                .get(1)
+                .findElement(By.cssSelector("p"))
                 .findElement(By.cssSelector("a"))
                 .click();
+
+        // Открывается поле для пароля
+
 
 
 

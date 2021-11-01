@@ -67,11 +67,15 @@ public class links {
         Thread.sleep(4000);
 
         // Переходим по ссылке
-
         driver
-                .findElementByClassName("cl_709040")
-                .findElement(By.linkText("https://rbd.kz/site/resetpass?passResetKey=FB5DC61BDB97F01F0CAAEF9C6A685891"))
+                .findElements(By.cssSelector("tbody"))
+                .get(1)
+                .findElements(By.cssSelector("tr"))
+                .get(1)
+                .findElement(By.cssSelector("p"))
+                .findElement(By.cssSelector("a"))
                 .click();
+
 
 
 
