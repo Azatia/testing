@@ -55,10 +55,9 @@ public class Registration {
         // Вводим скопированный E-mail
         driver
                 .findElement(By.className("form-control"))
-                .sendKeys("aza");
+                .sendKeys(Keys.CONTROL + "v");
 
 
-            //завис
 
 
 

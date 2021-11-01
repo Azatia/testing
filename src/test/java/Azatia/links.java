@@ -76,6 +76,10 @@ public class links {
                 .findElement(By.cssSelector("a"))
                 .click();
 
+        //Создаем новый пароль
+
+
+
 
 
 
