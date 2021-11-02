@@ -57,6 +57,8 @@ public class Registration {
                 .findElement(By.className("form-control"))
                 .sendKeys(Keys.CONTROL + "v");
 
+        // Нажимаем на кнопку продолжить
+
 
 
 

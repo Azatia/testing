@@ -8,14 +8,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.IOException;
+import java.util.Set;
 
 public class PasswordRecovery {
 
     @Test
-    public void azatik() throws InterruptedException, IOException, UnsupportedFlavorException {
+    public void azatik() throws Exception {
 
         WebDriverManager.chromedriver().setup();
 
@@ -82,7 +83,7 @@ public class PasswordRecovery {
 
         // Открываем письмо
         driver
-                .findElementsByClassName("ll-sj__normal")
+                .findElements(By.className("llc__content"))
                 .get(0)
                 .click();
 
@@ -100,31 +101,39 @@ public class PasswordRecovery {
 
         // Открывается поле для пароля
 
+        Thread.sleep(6000);
+
+        String currentHandle = driver.getWindowHandle();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+
+        Set<String> allHandles = driver.getWindowHandles();
+        for (String handle : allHandles) {
+            if (!handle.equals(currentHandle)) driver.switchTo().window(handle);
+        }
 
 
+        driver
+                .findElement(By.className("card-body"))
+                .findElements(By.className("form-group"))
+                .get(0)
+                .findElement(By.cssSelector("input"))
+                .sendKeys("Astana21");
 
+        driver
+                .findElement(By.className("card-body"))
+                .findElements(By.className("form-group"))
+                .get(1)
+                .findElement(By.cssSelector("input"))
+                .sendKeys("Astana21");
 
+        //Установить
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        driver
+                .findElementByClassName("rb-btn-next")
+                .click();
 
 
 
     }
-
 }
