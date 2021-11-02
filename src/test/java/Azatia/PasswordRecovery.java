@@ -133,6 +133,8 @@ public class PasswordRecovery {
                 .findElementByClassName("rb-btn-next")
                 .click();
 
+        // Конец
+
 
 
     }
