@@ -59,6 +59,16 @@ public class Registration {
 
         // Нажимаем на кнопку продолжить
 
+        driver
+                .findElementByClassName("rb-btn-next").click();
+
+        //Путь к временной почте
+
+        driver.get("https://temp-mail.org/ru/");
+
+        Thread.sleep(7000);
+
+
 
 
 
