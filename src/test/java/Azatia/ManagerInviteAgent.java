@@ -87,11 +87,72 @@ public class ManagerInviteAgent {
 
         Thread.sleep(3000);
 
+        // Нажимаем на инпут Агент
         driver
-                .findElementByClassName("options dropdown-menu")
+                .findElementByClassName("rb-tag-multi-select-input")
                 .findElements(By.className("dropdown-item"))
                 .get(0)
                 .click();
+
+        // Нажимаем на кнопку ОК
+        driver
+                .findElementById("rb-comp-3___BV_modal_footer_")
+                .findElement(By.className("btn-primary"))
+                .click();
+
+
+
+        //// Приглашенный агент принимает приглашение ////
+
+        // Вход в программу
+        driver.get("https://rbd.kz/site/login");
+
+
+        // Заполнение поля почты
+        driver
+                .findElementByClassName("rb-email")
+                .sendKeys("ram_aza@mail.ru");
+
+        // Заполнение поля пароля
+        driver
+                .findElementByClassName("rb-password")
+                .sendKeys("Astana21");
+
+        // Нажатие на кнопку «Войти»
+        driver
+                .findElementByClassName("rb-btn-voiti")
+                .click();
+
+
+        Thread.sleep(4000);
+
+        // Нажимаем на кнопку «Кабинет пользователя»
+        driver
+                .findElementById("rb-si-user-profile")
+                .click();
+
+        Thread.sleep(2000);
+
+        // Нажимаем на кнопку «Принять»
+        driver
+                .findElementByClassName("rb-invitation-card")
+                .findElement(By.className("rb-row"))
+                .findElement(By.className("rb-uppercase"))
+                .click();
+
+        Thread.sleep(4000);
+
+        // Подтверждаем наши намерения
+        driver.findElementById("rb-comp-3___BV_modal_footer_").findElement(By.className("btn-primary")).click();
+
+
+        //Агент становится сотрудником агентства
+
+
+
+
+
+
 
 
 
