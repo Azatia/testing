@@ -3,6 +3,7 @@ package Azatia;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.BrowserType;
@@ -12,7 +13,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Set;
 
-public class ManagerInviteAgent {
+import org.openqa.selenium.By;
+
+public class ManagerInviteNewAgent {
 
     @Test
     public void azatik() throws Exception {
@@ -27,7 +30,24 @@ public class ManagerInviteAgent {
         ChromeDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
-        //// МЕНЕДЖЕР АГЕНТСТВА ПРИГЛАШАЕТ СОТРУДНИКА В АГЕНТСТВО, АГЕНТ ПРИНИМАЕТ ПРИНГЛАШЕНИЕ ////
+
+
+        //// МЕНЕДЖЕР АГЕНТСТВА ПРИГЛАШАЕТ СОТРУДНИКА В АГЕНТСТВО, НОВЫЙ АГЕНТ ПРОХОДИТ РЕГИСТРАЦИЮ ////
+
+        // Создаем временную почту
+
+        //Путь к временной почте
+
+        driver.get("https://temp-mail.org/ru/");
+
+        Thread.sleep(7000);
+
+        // Копируем временную почту
+        driver
+                .findElementsByClassName("btn-rds")
+                .get(2)
+                .click();
+
 
         // Вход в программу
         driver.get("https://rbd.kz/site/login");
@@ -77,10 +97,11 @@ public class ManagerInviteAgent {
                 .findElement(By.className("mdi-plus"))
                 .click();
 
-        // Вводим E-mail
+        // Crtl + v
         driver
-                .findElementByClassName("is-invalid")
-                .sendKeys("ram_aza@mail.ru");
+                .findElementByClassName("modal-body")
+                .findElement(By.className("is-invalid")).sendKeys(Keys.CONTROL + "v");
+
 
         // Даем роль агента
         driver
@@ -103,62 +124,29 @@ public class ManagerInviteAgent {
                 .click();
 
 
-
-        //// Приглашенный агент принимает приглашение ////
-
-        // Вход в программу
-        driver.get("https://rbd.kz/site/login");
-
-
-        // Заполнение поля почты
+        // Идём на временный сайт
         driver
-                .findElementByClassName("rb-email")
-                .sendKeys("ram_aza@mail.ru");
+                .get("https://temp-mail.org/ru/");
 
-        // Заполнение поля пароля
-        driver
-                .findElementByClassName("rb-password")
-                .sendKeys("Astana21");
+        Thread.sleep(9000);
 
-        // Нажатие на кнопку «Войти»
+
+        // Отркываем письмо
         driver
-                .findElementByClassName("rb-btn-voiti")
+                .findElementByClassName("inbox-dataList")
+                .findElement(By.className("hidden-xs-sm"))
                 .click();
 
+        // Переходим по ссылке в письме ------------------------------ не закончил
 
-        Thread.sleep(4000);
-
-        // Нажимаем на кнопку «Кабинет пользователя»
         driver
-                .findElementById("rb-si-user-profile")
+                .findElements(By.cssSelector("tbody"))
+                .get(1)
+                .findElements(By.cssSelector("tr"))
+                .get(1)
+                .findElement(By.cssSelector("p"))
+                .findElement(By.cssSelector("a"))
                 .click();
-
-        Thread.sleep(2000);
-
-        // Нажимаем на кнопку «Принять»
-        driver
-                .findElementByClassName("rb-invitation-card")
-                .findElement(By.className("rb-row"))
-                .findElement(By.className("rb-uppercase"))
-                .click();
-
-        Thread.sleep(4000);
-
-        // Подтверждаем наши намерения
-        driver.findElementById("rb-comp-3___BV_modal_footer_").findElement(By.className("btn-primary")).click();
-
-
-        //Агент становится сотрудником агентства
-
-
-
-
-
-
-
-
-
-
 
 
 
