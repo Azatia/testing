@@ -25,58 +25,214 @@ public class links {
         ChromeDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
+        // ДОБАВЛЯЕМ ЛИДЫ
 
-        //Идём на почту Mail.ru
-        driver.get("https://mail.ru/");
 
-        Thread.sleep(3000);
+        // Лиды
+        driver.get("http://167.71.49.98/site/login");
 
-        //Логинемся
+
+        // Логинемся
         driver
-                .findElementByClassName("email-input")
-                .sendKeys("ves_rbd@mail.ru");
+                .findElementByClassName("rb-email")
+                .sendKeys("k.hamzina@bi-agency.kz.staging");
 
-        // Нажимаем на ввести пароль
+        // Заполнение поля пароля
         driver
-                .findElementByClassName("icon-next")
-                .click();
+                .findElementByClassName("rb-password")
+                .sendKeys("111");
 
-        Thread.sleep(3000);
-
+        // Нажатие на кнопку «Войти»
         driver
-                .findElementById("mailbox")
-                .findElement(By.className("password-input-container"))
-                .findElement(By.className("password-input"))
-                .sendKeys("astana21");
-
-
-        driver
-                .findElementById("mailbox")
-                .findElement(By.className("second-button"))
+                .findElementByClassName("rb-btn-voiti")
                 .click();
 
         Thread.sleep(5000);
 
-
-        // Открываем письмо
+        // Нажимаем на раздел Лиды
         driver
-                .findElementsByClassName("llc__content")
+                .findElementById("rb-si-leads")
+                .findElement(By.className("rb-title"))
+                .click();
+
+        // Нажимаем на Добавить лид
+        driver
+                .findElementByClassName("rb-toolbar-actions-section")
+                .findElement(By.className("mdi-plus"))
+                .click();
+
+        // ЗАПОЛНЕНИЕ ЛИДА
+
+        // Заполняем имя
+        driver
+                .findElementByClassName("rb-lead-form-section-wrapper")
+                .findElement(By.className("lead-form-section-name-item"))
+                .findElement(By.className("form-control"))
+                .sendKeys("Zarina");
+
+        // Заполняем E-mail
+        driver
+                .findElementByClassName("rb-lead-form-section-wrapper")
+                .findElement(By.className("lead-form-section-email-item"))
+                .findElement(By.className("form-control"))
+                .sendKeys("Askar_com@mail.ru");
+
+        // Заполняем телефон
+        driver
+                .findElementByClassName("rb-lead-form-section-wrapper")
+                .findElement(By.className("lead-form-section-phone-item"))
+                .findElement(By.className("form-control"))
+                .sendKeys("+77773209095");
+
+        // Заполняем источник
+        driver
+                .findElementByClassName("rb-lead-form-section-wrapper")
+                .findElement(By.className("lead-form-section-source-item"))
+                .findElement(By.className("btn-light"))
+                .click();
+
+        // Выбираем тип источника
+        driver
+                .findElementByClassName("rb-lead-form-section")
+                .findElement(By.className("dropdown-menu"))
+                .findElements(By.className("dropdown-item"))
+                .get(5)
+                .click();
+
+        // Нажимаем на кнопку Добавить
+        driver
+                .findElementByClassName("rb-footer-buttons")
+                .findElement(By.className("btn-primary"))
+                .click();
+
+
+        Thread.sleep(3000);
+
+
+        // РЕДАКТИРУЕМ ЛИД — Создаем сделку
+
+        // Нажимаем на Лид
+        driver
+                .findElementByClassName("rb-table-card-lead")
+                .findElements(By.className("rb-name-column"))
+                .get(1)
+                .click();
+
+        Thread.sleep(5000);
+
+        // Нажимаем на Разобрать Лид
+        driver
+                .findElementByClassName("main-row")
+                .findElement(By.className("rb-actions"))
+                .findElement(By.className("mdi-check-circle"))
+                .click();
+
+
+        Thread.sleep(3000);
+
+        // Нажимаем на инпут Категорию Лида
+        driver
+                .findElementByClassName("lead-form-section-category-item")
+                .findElement(By.className("rb-bordered"))
+                .findElement(By.className("btn-light"))
+                .findElement(By.className("rb-text"))
+                .click();
+
+        // Выбираем категорию
+        driver
+                .findElementByClassName("lead-form-section-category-item")
+                .findElement(By.className("rb-bordered"))
+                .findElements(By.className("dropdown-item"))
+                .get(1)
+                .click();
+
+
+        // Нажимаем на инпут тип сделки
+        driver
+                .findElementByClassName("deal-form-section-deal-type")
+                .findElement(By.className("btn-light"))
+                .click();
+
+        Thread.sleep(3000);
+
+        // Выбираем тип сделки Продавец
+        driver
+                .findElementByClassName("deal-form-section-deal-type")
+                .findElement(By.className("dropdown-menu"))
+                .findElements(By.className("dropdown-item"))
+                .get(5)
+                .click();
+
+        Thread.sleep(3000);
+
+        // Нажимаем на кнопку Создать сделку
+        driver
+                .findElementByClassName("btn-success")
+                .click();
+
+        // ПОЛЕ СОЗДАНИЯ СДЕЛКИ
+
+        Thread.sleep(3000);
+
+        // Нажимаем на поле Агент и вводим имя агента
+        driver
+                .findElementByClassName("lead-deal-form")
+                .findElements(By.className("form-group"))
                 .get(0)
-                .click();
+                .findElement(By.className("rb-typeahead-input"))
+                .sendKeys("Azat Ramazanov" + "\n");
 
-        Thread.sleep(4000);
+        // Непонятно, почему не вышло имя Азат, а другое женское
 
-        // Переходим по ссылке
+
+        // Нажимаем на поле Тип договора
+        //driver
+        //        .findElementByClassName("deal-form-section-agreement-type")
+        //        .findElement(By.className("dropdown-toggle"))
+        //        .click();
+
+        // Заполняем поле Цены
         driver
-                .findElements(By.cssSelector("tbody"))
-                .get(1)
-                .findElements(By.cssSelector("tr"))
-                .get(1)
-                .findElement(By.cssSelector("p"))
-                .findElement(By.cssSelector("a"))
-                .click();
+                .findElement(By.className("rb-sf-price-item"))
+                .findElement(By.className("form-control"))
+                .sendKeys("2500000");
 
-        //Создаем новый пароль
+        Thread.sleep(3000);
+
+        // Заполняем адрес
+        driver
+                .findElement(By.className("sf-address-item"))
+                .findElement(By.className("multiselect__placeholder"))
+                .sendKeys("\n");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
