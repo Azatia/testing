@@ -114,11 +114,11 @@ public class Leadedit2 {
                 .click();
 
 
-        // ОСТАНОВИЛСЯ ТУТ
+        Thread.sleep(3000);
 
         // Нажимаем на поле Агент и вводим имя агента
         driver
-                .findElementByClassName("lead-deal-form")
+                .findElement(By.className("lead-deal-form"))
                 .findElements(By.className("form-group"))
                 .get(1)
                 .findElement(By.className("rb-typeahead-input"))
@@ -136,6 +136,7 @@ public class Leadedit2 {
                 .findElement(By.className("multiselect__tags"))
                 .findElement(By.cssSelector("input"))
                 .sendKeys("Azat Ramazanov");
+
         Thread.sleep(1000);
 
         driver
@@ -146,6 +147,41 @@ public class Leadedit2 {
                 .findElement(By.className("multiselect__tags"))
                 .findElement(By.cssSelector("input"))
                 .sendKeys(Keys.ENTER);
+
+
+        // Нажимаем на Тип договора
+
+        driver
+                .findElement(By.className("lead-deal-form"))
+                .findElement(By.className("deal-form-section-agreement-type"))
+                .findElement(By.className("rb-bordered"))
+                .click();
+
+        Thread.sleep(1000);
+
+        // Нажимаем на Типовой
+        driver
+                .findElement(By.className("lead-deal-form"))
+                .findElement(By.className("deal-form-section-agreement-type"))
+                .findElements(By.className("dropdown-item"))
+                .get(2)
+                .click();
+
+        Thread.sleep(2000);
+
+        // Нажимаем на Создать
+
+        driver
+                .findElement(By.className("btn-sm"))
+                .click();
+
+
+
+
+
+
+
+
 
 
 
