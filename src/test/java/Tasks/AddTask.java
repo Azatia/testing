@@ -1,16 +1,17 @@
-package Leads;
+package Tasks;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 
-public class LeadPushToAnotherLeads {
+public class AddTask {
 
     @Test
     public void azatik() throws InterruptedException {
@@ -26,7 +27,7 @@ public class LeadPushToAnotherLeads {
         driver.manage().window().maximize();
 
 
-        // Лиды
+        // Сайт
         driver.get("http://167.71.49.98/site/login");
 
 
@@ -49,36 +50,47 @@ public class LeadPushToAnotherLeads {
 
         // Нажимаем на раздел Лиды
         driver
-                .findElementById("rb-si-leads")
+                .findElementById("rb-si-todos")
                 .findElement(By.className("rb-title"))
+                .click();
+
+
+        Thread.sleep(3000);
+
+        // Нажимаем на кнопку Добавить задачу
+        driver
+                .findElement(By.className("rb-toolbar-actions-section"))
+                .findElement(By.className("mdi-plus"))
                 .click();
 
         Thread.sleep(3000);
 
-        // Выбираем лид
+        // Нажимаем на Описание и заполняем текстом
         driver
-                .findElementByClassName("rb-table-card-lead")
-                .findElements(By.className("rb-name-column"))
-                .get(1)
+                .findElement(By.className("todo-description-form-section"))
+                .findElement(By.className("form-control"))
+                .sendKeys("Азат самый лучший любовник на свете");
+
+        // Нажимаем на Дата и время
+        driver
+                .findElement(By.className("rb-field-group"))
+                .findElements(By.className("form-group"))
+                .get(0)
                 .click();
 
-        Thread.sleep(5000);
 
-        // Нажимаем на Другие лиды
+        Thread.sleep(3000);
+
+        // В поле Дата и время нажимаем на ОК
         driver
-                .findElements(By.className("rb-lead-show-section"))
-                .get(5)
-                .findElement(By.className("deals-with-lead-section"))
-                .findElement(By.className("row-cards"))
-                .findElement(By.className("card-item-field"))
+                .findElement(By.className("rb-field-group"))
+                .findElements(By.className("form-group"))
+                .get(0)
+                .findElement(By.className("el-picker-panel__footer"))
+                .findElement(By.className("el-button--default"))
                 .click();
-
-        // Конец
-
-
 
 
 
     }
-
 }

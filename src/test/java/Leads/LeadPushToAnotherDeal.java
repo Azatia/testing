@@ -4,13 +4,12 @@ package Leads;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 
-public class LeadPushToAnotherLeads {
+public class LeadPushToAnotherDeal {
 
     @Test
     public void azatik() throws InterruptedException {
@@ -64,10 +63,10 @@ public class LeadPushToAnotherLeads {
 
         Thread.sleep(5000);
 
-        // Нажимаем на Другие лиды
+        // Нажимаем на Сделка с лидом
         driver
                 .findElements(By.className("rb-lead-show-section"))
-                .get(5)
+                .get(4)
                 .findElement(By.className("deals-with-lead-section"))
                 .findElement(By.className("row-cards"))
                 .findElement(By.className("card-item-field"))
