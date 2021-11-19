@@ -4,14 +4,12 @@ package Tasks;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 
-public class AddTask {
+public class TaskClose {
 
     @Test
     public void azatik() throws InterruptedException {
@@ -48,7 +46,7 @@ public class AddTask {
 
         Thread.sleep(5000);
 
-        // Нажимаем на раздел Лиды
+        // Нажимаем на раздел Задачи
         driver
                 .findElementById("rb-si-todos")
                 .findElement(By.className("rb-title"))
@@ -57,46 +55,16 @@ public class AddTask {
 
         Thread.sleep(3000);
 
-        // Нажимаем на кнопку Добавить задачу
+        // Открываем задачу
         driver
-                .findElement(By.className("rb-toolbar-actions-section"))
-                .findElement(By.className("mdi-plus"))
-                .click();
-
-        Thread.sleep(3000);
-
-        // Нажимаем на Описание и заполняем текстом
-        driver
-                .findElement(By.className("todo-description-form-section"))
-                .findElement(By.className("form-control"))
-                .sendKeys("Азат самый лучший любовник на свете");
-
-        // Нажимаем на Дата и время
-        driver
-                .findElement(By.className("rb-field-group"))
-                .findElements(By.className("form-group"))
-                .get(0)
+                .findElements(By.className("rb-todo-column"))
+                .get(1)
+                .findElement(By.className("rb-todo-name"))
                 .click();
 
 
-        Thread.sleep(3000);
-
-        // В поле Дата и время нажимаем на ОК
-        driver
-                .findElement(By.className("has-time"))
-                .findElement(By.className("el-picker-panel__footer"))
-                .findElement(By.cssSelector("span"))
-                .click();
-
-        Thread.sleep(2000);
 
 
-        // Нажимаем на кнопку Добавить
-
-        driver
-                .findElement(By.className("modal-footer"))
-                .findElement(By.className("btn-primary"))
-                .click();
 
 
 
